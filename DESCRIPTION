@@ -1,0 +1,11 @@
+Package: oceandatrsets
+Title: Houses Large Datasets for the oceandatr Package
+Version: 0.1
+Authors@R: person(given = "Jason", family = "Flower", email = "jflower@ucsb.edu", role = c("aut", "cre"), comment = c(ORCID = "0000-0002-6731-8182"))
+Description: R package to house large datasets for the oceandatr package.
+License: GPL (>= 3)
+Encoding: UTF-8
+Depends: 
+    R (>= 3.5.0)
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 8.0.0
