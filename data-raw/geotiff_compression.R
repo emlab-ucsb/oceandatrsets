@@ -77,4 +77,4 @@ octocoral_path <- "data-raw/YessonEtAl_Consensus.tif"
 
 octocoral <- terra::rast(octocoral_path)
 
-terra::writeRaster(octocoral, "inst/extdata/octocoral.tiff", gdal = c("COMPRESS=ZSTD", "PREDICTOR=2", "ZSTD_LEVEL=22", "NUM_THREADS=10"), datatype = "INT1U")
+terra::writeRaster(octocoral, "inst/extdata/octocoral.tif", gdal = c("COMPRESS=ZSTD", "PREDICTOR=2", "ZSTD_LEVEL=22", "NUM_THREADS=10"), datatype = "INT1U")
