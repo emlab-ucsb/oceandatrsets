@@ -61,15 +61,33 @@ terra::plet(terra::crop(anchorages_name_grouped_masked, baltic_ext), "on_land", 
     _[["antimeridian_code"]] |>
     unique() #only 1 antimeridian code per labelled anchorage, so none of the anchorages with the same label (name) have points on both sides of the antimeridian
 
-  #save datasets one with all the anchorages, points only, and one with anchorages grouped by name with a column for the land mask (TRUE = point is over land)
+  #save datasets one with all the anchorages, points only, and one with anchorages grouped by name with a column for the land mask
+  #(TRUE = point is over land)
 
-anchorages_all |>
-  terra::crds(df = TRUE) |>
-  saveRDS("inst/extdata/anchorages_all.rds")
+# save datasets so that they can be referenced directly using oceandatrsets::anchorages_all
+# this avoids NOTE from R CMD CHECK for oceandatr: "Namespace in Imports field not imported from: ‘oceandatrsets’
+#   All declared Imports should be used."
 
-anchorages_name_grouped_masked[, "on_land"] |>
-  terra::as.data.frame(geom = "XY") |>
-  saveRDS("inst/extdata/anchorages_grouped.rds")
+anchorages_all <- terra::crds(anchorages_all, df = TRUE)
+
+#write .rda file to `data/` and "LazyData: true" to DESCRIPTION
+usethis::use_data(anchorages_all)
+
+anchorages_grouped <- anchorages_name_grouped_masked[, "on_land"] |>
+  terra::as.data.frame(geom = "XY")
+
+#write .rda file to `data/`
+usethis::use_data(anchorages_grouped)
+
+
+#Previous code for saving datasets as raw
+# anchorages_all |>
+#   terra::crds(df = TRUE) |>
+#   saveRDS("inst/extdata/anchorages_all.rds")
+#
+# anchorages_name_grouped_masked[, "on_land"] |>
+#   terra::as.data.frame(geom = "XY") |>
+#   saveRDS("inst/extdata/anchorages_grouped.rds")
 
 
 
