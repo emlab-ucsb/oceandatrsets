@@ -48,7 +48,7 @@ for (file_name in geomorph_files) {
         st_as_sf() |>
         dplyr::mutate(geomorph_type = paste0("abyssal_", tolower(abyssal_class)), .before = 1) |>
         sf::st_set_geometry("geometry") |>
-        saveRDS(file = file.path("inst/extdata/geomorphology", paste0("abssyal_", tolower(abyssal_class), ".rds")))
+        saveRDS(file = file.path("inst/extdata/geomorphology", paste0("abyssal_", tolower(abyssal_class), ".rds")))
     }
   } else{
     geomorph_sf_object |>
